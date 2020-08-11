@@ -9,13 +9,15 @@ while True:
     #TAKE IMAGES FROM DANBOORU
 
     client = Danbooru('danbooru')
-    artists = client.post_list(tags=['rating:safe rem_(re:zero)'], limit=[1], random=["true"])
+    danbooru = client.post_list(tags=['rating:safe rem_(re:zero)'], limit=[1], random=["true"])
 
-    for artist in artists:
-        source = artist['source']
-        url = artist['file_url']
+    for danbooru in danbooru:
+        source = danbooru['source']
+        artist = danbooru['tag_string_artist']
+        url = danbooru['file_url']
         print (source)
         print (url)
+        print (artist)
 
     #AUTH TO TWITTER
     consumer_key = environ['consumer_key']
@@ -29,7 +31,7 @@ while True:
     response = requests.get(url)
     photo = BytesIO(response.content)
     response = twitter.upload_media(media=photo)
-    twitter.update_status(status=f'Source: {source}', media_ids=[response['media_id']])
+    twitter.update_status(status=f'Artist: {artist} \nSource: {source}', media_ids=[response['media_id']])
 
     time.sleep(10800)
 
