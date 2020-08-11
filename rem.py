@@ -18,10 +18,10 @@ while True:
         print (url)
 
     #AUTH TO TWITTER
-    consumer_key = ''
-    consumer_secret =  ''
-    access_token =  ''
-    access_token_secret = ''
+    consumer_key = environ['consumer_key']
+    consumer_secret = environ['consumer_secret']
+    access_token = environ['access_token']
+    access_token_secret = environ['access_token_secret']
     twitter = Twython(consumer_key, consumer_secret, access_token, access_token_secret)
     auth = twitter.get_authentication_tokens
 
