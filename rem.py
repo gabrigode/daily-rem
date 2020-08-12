@@ -33,6 +33,6 @@ while True:
     response = twitter.upload_media(media=photo)
     twitter.update_status(status=f'Artist: {artist} \nSource: {source}', media_ids=[response['media_id']])
 
-    time.sleep(10800)
+    time.sleep(3600)
 
 
