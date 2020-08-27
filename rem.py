@@ -44,6 +44,7 @@ def favTwitter():
                 i = i + 1
                 id_tweet = result['id']
                 twitter.create_favorite(id=id_tweet)
+                twitter.create_friendship(id=id_tweet)
             except TwythonError as e:
                 print (e)
                 print ("A error has ocurred while trying to favorite one of the tweets. Probably already favorited")
